@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  savedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+  sharedPosts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 });
