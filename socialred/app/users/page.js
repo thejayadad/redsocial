@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react';
-
+import Link from 'next/link';
 
  
 
@@ -25,12 +25,17 @@ const User = () => {
   return (
     <section>
         <h2>All Users</h2>
+        <Link href={'/'}>Home</Link>
         {users?.length > 0 
        ? users.map((user) => (
         <div key={user._id}> 
-        <h2>{user.email}</h2>
+        <h2>
+          <Link href={`/user/${user._id}`}>
+          {user.email}
+          </Link>        
+        </h2>
         </div>
-      )) : <h3>No users are currently in the</h3>}
+      )) : <h3>No users To Display</h3>}
 
     </section>
   )
