@@ -1,11 +1,25 @@
 
 "use client"
 import Image from 'next/image'
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import logo from "../public/logo.png"
 import Link from 'next/link'
+import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+
 
 const Navbar = () => {
+  const { data: session } = useSession();
+  const [providers, setProviders] = useState(null);
+
+  useEffect(() => {
+    const setupProviders = async () => {
+      const response = await getProviders();
+      setProviders(response);
+    };
+    setupProviders();
+  }, []);
+
+
   return (
     <header className='flex justify-between 
     gap-3 md:gap-2 items-center p-6 '>
@@ -16,18 +30,40 @@ const Navbar = () => {
             src={logo}
         />
         <nav>
-            <ul>
-                <li>
-                <Link href={'/create-post'} className='font-semibold p-3 px-6
-                    bg-gray-300
-                    rounded-full text-[25px]' 
-                >Create</Link>
-                <button className='font-semibold p-3 px-4
-                bg-gray-300
-                rounded-full text-[25px]' 
-            >Logout</button>
-                </li>
-            </ul>
+        {session?.user ? (
+        <div className="flex items-center space-x-8">
+          <Link href="/create-prompt" className="blue-btn">
+            Create Prompt
+          </Link>
+     
+              <Image
+                src={session?.user.image}
+                width={"37"}
+                height={"37"}
+                className="rounded-full"
+                alt="Profile Picture"
+              />
+
+              <div className="flex flex-col py-2 px-3 space-y-2">
+                <Link href={`/profile/${session?.user.id}`}>Profile</Link>
+                <button onClick={signOut}>Logout</button>
+              </div>
+         
+        </div>
+      ) : (
+        <>
+          {providers &&
+            Object.values(providers).map((provider) => (
+              <button
+                className="blue-btn"
+                key={provider.name}
+                onClick={() => signIn(providers.id)}
+              >
+                Sign In
+              </button>
+            ))}
+        </>
+      )}
         </nav>
     </header>
   )
