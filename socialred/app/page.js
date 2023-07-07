@@ -8,6 +8,7 @@ export default function Home() {
       <Link href={'/users'}>All Users</Link>
       <Link href={'/community'}>All communities</Link>
       <Link href={'/community/create-community'}>Create Community</Link>
+      <Link href={'/create-post'}>Create Post</Link>
 
     </main>
   )

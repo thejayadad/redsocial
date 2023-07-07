@@ -1,7 +1,6 @@
 import db from '@/lib/db';
 import Community from '@/models/Community';
-import { verifyJwtToken, verifyToken } from '@/lib/jwt';
-
+import { verifyJwtToken } from '@/lib/jwt';
 
 export async function GET(req) {
     await dbConnect();
