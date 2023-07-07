@@ -55,8 +55,8 @@ const Createpost = () => {
         <section>
             <h2>Create Post</h2>
             <form onSubmit={handleSubmit}>
-                <input onChange={(e) => setTitle(e.target.value)} type='text' placeholder='Title' />
-                <input onChange={(e) => setContent(e.target.value)} type='text' placeholder='Content' />
+                <input onChange={(e) => setTitle(e.target.value)} type='text' id='title' placeholder='Title' />
+                <input onChange={(e) => setContent(e.target.value)} type='text' id='content' placeholder='Content' />
                 <button type='submit'>New Post</button>
             </form>
         </section>
