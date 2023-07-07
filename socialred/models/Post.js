@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import {model, models, Schema, mongoose} from "mongoose";
 
 const PostSchema = new mongoose.Schema({
   title: {
@@ -9,17 +9,17 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  author: {
+  authorId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    required: true
-  },
+    ref: "Users"
+},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }],
   community: { type: mongoose.Schema.Types.ObjectId, ref: 'Community'},
   shares: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   saves: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  downvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
-});
+  parent: {type:mongoose.Types.ObjectId, ref: 'Post'},
+  upvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }],
+  downvotes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User', default: [] }]
+}, {timestamps: true});
 
 export default mongoose?.models?.Post || mongoose.model("Post", PostSchema) 

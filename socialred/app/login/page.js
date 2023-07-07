@@ -12,17 +12,6 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
-        if (password === '' || email === '') {
-            toast.error("Fill all fields!")
-            return
-        }
-
-        if (password.length < 6) {
-            toast.error("Password must be at least 6 characters long")
-            return
-        }
-
         try {
             const res = await signIn('credentials', { email, password, redirect: false })
 

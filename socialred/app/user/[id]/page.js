@@ -17,11 +17,7 @@ const Userprofile = (ctx) => {
   return (
     <section>
         <h2>User Profile</h2><Link href={'/'}>Home</Link>
-        <p>{userDetails.username}</p>
-        <h4>{userDetails.email}</h4>
-        <h4>{userDetails.following}</h4>
-        <h4>{userDetails.post}</h4>
-
+        <p>{userDetails}</p>
     </section>
   )
 }

@@ -7,7 +7,7 @@ export async function GET(req, ctx) {
     const id = ctx.params.id
 
     try {
-        const user = await User.findById(id)
+        const user = await User.findById(id).populate('posts')
         return new Response(JSON.stringify(user), { status: 200 })
     } catch (error) {
         return new Response(JSON.stringify(null), { status: 500 })

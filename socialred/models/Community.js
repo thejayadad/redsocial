@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const CommunitySchema = new mongoose.Schema({
   name: {
@@ -9,10 +9,9 @@ const CommunitySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  author: {
+  authorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required: true
   },
   posts: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Post' }]
 });

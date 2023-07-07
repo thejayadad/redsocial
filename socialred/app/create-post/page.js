@@ -11,7 +11,7 @@ const Createpost = () => {
     const { data: session, status } = useSession()
     const router = useRouter()
     if (status === 'loading') {
-        return <p className='text-center text-5xl'>Loading...</p>
+        return <p>Loading...</p>
     }
   
     if (status === 'unauthenticated') {
