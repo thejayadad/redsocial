@@ -19,4 +19,4 @@ const userSchema = new mongoose.Schema({
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 });
 
-export default mongoose.models.User || mongoose.model('User', userSchema);
+export default mongoose.models.Users || mongoose.model('Users', userSchema);
