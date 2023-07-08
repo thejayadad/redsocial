@@ -1,9 +1,11 @@
-import Image from 'next/image'
+'use client'
+import Dontlist from '@/components/Dontlist'
 
 export default function Home() {
   return (
-    <main>
-      <h2>Hello World</h2>
-    </main>
+    <section  className='p-3'>
+      <h4>DONUTS</h4>
+      <Dontlist />
+    </section>
   )
 }
