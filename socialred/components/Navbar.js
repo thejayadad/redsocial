@@ -22,10 +22,10 @@ const Navbar = () => {
 
   return (
     <header className='flex justify-between 
-    gap-3 md:gap-2 items-center p-6 '>
+    gap-3 md:gap-2 items-center p-6'>
         <Image
             className='hover:bg-gray-300 p-2 rounded-full cursor-pointer'
-            width={100} height={80}
+            width={80} height={80}
             alt='logo'
             src={logo}
         />
